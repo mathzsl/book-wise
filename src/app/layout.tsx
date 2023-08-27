@@ -2,6 +2,7 @@ import "./globals.css";
 import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
+import { SessionProvider } from "@/contexts/SessionProviderContext";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -13,7 +14,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html className={nunito.className} lang="en">
-      <body className="bg-grayApp-800">{children}</body>
+      <body className="bg-grayApp-800">
+        <SessionProvider>{children}</SessionProvider>
+      </body>
     </html>
   );
 }

@@ -1,4 +1,5 @@
 import { ComponentProps } from "react";
+import { useAuthButtons } from "./Root";
 
 interface TriggerProps extends ComponentProps<"button"> {}
 

@@ -1,3 +1,4 @@
+import { useAuthButtons } from "@/components/AuthButtons/Root";
 import * as AuthButton from "../../components/AuthButtons";
 
 export default function Login() {
@@ -11,7 +12,7 @@ export default function Login() {
       </div>
 
       <AuthButton.Root>
-        <AuthButton.Trigger>
+        <AuthButton.Trigger type="button">
           <AuthButton.Prefix
             src="./images/icons/google.svg"
             alt="Google logo"
@@ -19,20 +20,20 @@ export default function Login() {
           Entrar com Google
         </AuthButton.Trigger>
 
-        <AuthButton.Trigger>
+        <AuthButton.Trigger type="button">
           <AuthButton.Prefix
             src="./images/icons/github.svg"
             alt="Github logo"
           />
-          Entrar com Google
+          Entrar com Github
         </AuthButton.Trigger>
 
-        <AuthButton.Trigger>
+        <AuthButton.Trigger type="button">
           <AuthButton.Prefix
             src="./images/icons/rocket.svg"
             alt="Rocket logo"
           />
-          Entrar com Google
+          Entrar como visiante
         </AuthButton.Trigger>
       </AuthButton.Root>
     </div>
