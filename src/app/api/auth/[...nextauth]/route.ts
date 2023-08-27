@@ -3,6 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import GitHubProvider, { GithubProfile } from "next-auth/providers/github";
+import GoogleProvider, { GoogleProfile } from "next-auth/providers/google";
 
 export function buildNextNextAuthOptions(
   req: NextApiRequest,
@@ -21,6 +22,19 @@ export function buildNextNextAuthOptions(
             name: profile.name!,
             email: profile.email!,
             avatar_url: profile.avatar_url,
+          };
+        },
+      }),
+
+      GoogleProvider({
+        clientId: process.env.GOOGLE_CLIENT_ID ?? "",
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
+        profile(profile: GoogleProfile) {
+          return {
+            id: profile.sub,
+            name: profile.name,
+            email: profile.email,
+            avatar_url: profile.picture,
           };
         },
       }),
