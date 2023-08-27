@@ -36,11 +36,8 @@ export function buildNextNextAuthOptions(
   };
 }
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
+export async function auth(req: NextApiRequest, res: NextApiResponse) {
   return await NextAuth(req, res, buildNextNextAuthOptions(req, res));
 }
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
-  return await NextAuth(req, res, buildNextNextAuthOptions(req, res));
-}
-
+export { auth as GET, auth as POST };
