@@ -4,7 +4,7 @@ import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import GitHubProvider, { GithubProfile } from "next-auth/providers/github";
 
-export function buildNextAuthOptions(
+export function buildNextNextAuthOptions(
   req: NextApiRequest,
   res: NextApiResponse
 ): NextAuthOptions {
@@ -36,6 +36,11 @@ export function buildNextAuthOptions(
   };
 }
 
-export default async function auth(req: NextApiRequest, res: NextApiResponse) {
-  return await NextAuth(req, res, buildNextAuthOptions(req, res));
+export async function POST(req: NextApiRequest, res: NextApiResponse) {
+  return await NextAuth(req, res, buildNextNextAuthOptions(req, res));
 }
+
+export async function GET(req: NextApiRequest, res: NextApiResponse) {
+  return await NextAuth(req, res, buildNextNextAuthOptions(req, res));
+}
+

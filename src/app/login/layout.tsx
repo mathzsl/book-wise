@@ -7,10 +7,7 @@ export default function LoginLayout({ children }: { children: ReactNode }) {
         <img src="/images/book-wise-logo.svg" alt="BookWise Logo" />
       </section>
 
-      <section className="flex items-center justify-center">
-      {children}
-
-      </section>
+      <section className="flex items-center justify-center">{children}</section>
     </main>
   );
 }

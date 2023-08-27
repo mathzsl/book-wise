@@ -1,6 +1,7 @@
-'use client'
+"use client";
 
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { ComponentProps, useContext } from "react";
 import { createContext } from "react";
 
@@ -13,7 +14,14 @@ const AuthButtonsContext = createContext({} as AuthButtonsContextType);
 interface RootProps extends ComponentProps<"div"> {}
 
 export function Root({ ...props }: RootProps) {
+  const router = useRouter();
+
   function onHandleSignIn(provider?: string, callbackUrl = "/") {
+    if (!provider) {
+      router.push(callbackUrl);
+      return;
+    }
+
     signIn(provider, {
       callbackUrl,
     });
@@ -21,7 +29,7 @@ export function Root({ ...props }: RootProps) {
 
   return (
     <AuthButtonsContext.Provider value={{ onHandleSignIn }}>
-      <div {...props} className="flex flex-col  gap-4" />;
+      <div {...props} />
     </AuthButtonsContext.Provider>
   );
 }

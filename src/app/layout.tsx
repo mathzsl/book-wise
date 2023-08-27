@@ -2,7 +2,7 @@ import "./globals.css";
 import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
-import { SessionProvider } from "@/contexts/SessionProviderContext";
+import { SessionProvider } from "@/contexts/session-provider-context";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
